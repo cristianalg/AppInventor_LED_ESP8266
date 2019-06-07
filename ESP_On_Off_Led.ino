@@ -2,8 +2,8 @@
 #include <ESP8266WiFi.h>
 
 // Credenciais de acesso à rede
-const char* ssid     = "AndroidAP";
-const char* password = "ihtv0248";
+const char* ssid     = "UserWifi";
+const char* password = "PassWifi";
 
 // Número da porta (80) do servidor web
 WiFiServer server(80);
@@ -68,16 +68,11 @@ void loop() {
   client.flush();
 
   // Prepare a resposta
-  //String s = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE HTML>\r\n<html>\r\nLED  ";
   String s = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\nLED  ";
   s += (val)?"Ligado":"Desligado";
- // s += "</html>\n";
 
   // Envie a resposta para o cliente
   client.print(s);
   delay(1);
   Serial.println("Cliente desligado.");
-
-  // O cliente será realmente desconectado 
-  // quando a função retornar e o objeto 'cliente' for destruído
 }
